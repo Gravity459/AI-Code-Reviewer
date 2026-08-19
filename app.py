@@ -14,33 +14,26 @@ MODEL = "gemini-3.5-flash-lite"
 client = genai.Client(api_key=st.secrets["GEMINI_API_KEY"])
 
 
-def review_code(code: str, language: str):
-    prompt = f"""
-{SYSTEM_PROMPT}
+st.title("🤖 AI Code Reviewer")
 
-Programming language:
-{language}
+with st.sidebar:
 
-Code to review:
+    st.header("⚙️ Review Settings")
 
-```{language.lower()}
-{code}
-```
+    st.markdown(
+        """
+        This AI reviewer analyzes code for:
 
-Review this code now.
-"""
-
-    stream = client.models.generate_content_stream(
-        model=MODEL,
-        contents=prompt,
+        - 📖 Readability
+        - 🏗️ Structure
+        - 🔧 Maintainability
+        """
     )
 
-    for chunk in stream:
-        if chunk.text:
-            yield chunk.text
+    st.divider()
 
+    st.caption("Powered by Google Gemini")
 
-st.title("🤖 AI Code Reviewer")
 
 st.markdown(
     """
@@ -83,6 +76,33 @@ review_button = st.button(
     type="primary",
     use_container_width=True,
 )
+
+
+def review_code(code: str, language: str):
+    prompt = f"""
+{SYSTEM_PROMPT}
+
+Programming language:
+{language}
+
+Code to review:
+
+```{language.lower()}
+{code}
+```
+
+Review this code now.
+"""
+
+    stream = client.models.generate_content_stream(
+        model=MODEL,
+        contents=prompt,
+    )
+
+    for chunk in stream:
+        if chunk.text:
+            yield chunk.text
+
 
 if review_button:
     if not code.strip():
