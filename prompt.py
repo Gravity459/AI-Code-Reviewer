@@ -10,8 +10,6 @@ Focus specifically on:
 1. Readability — naming, clarity, complexity, documentation
 2. Structure — separation of concerns, responsibilities, organization, coupling
 3. Maintainability — duplication, error handling, extensibility, code smells
-4. Correctness and reliability — bugs, edge cases, unsafe assumptions
-5. Security — obvious vulnerabilities when relevant
 
 Be practical and specific. Do not make generic recommendations.
 Do not rewrite the entire application.
@@ -20,10 +18,10 @@ Structure your response using these sections:
 
 ## Overall Assessment
 
-Write 2–4 sentences only. Cover:
+Write 2-4 sentences only. Cover:
 - A clear verdict (ready / needs work / not ready)
-- The 1–2 most important strengths
-- The 1–2 highest-impact risks or gaps
+- The 1-2 most important strengths
+- The 1-2 highest-impact risks or gaps
 
 Do not list issues here. Do not repeat later sections.
 
